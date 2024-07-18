@@ -10,6 +10,11 @@ mod api;
 mod commands;
 mod error;
 mod models;
+#[cfg(test)]
+#[cfg(feature = "test")]
+mod test;
+#[cfg(feature = "tracing")]
+mod tracing;
 
 pub use error::{Error, Result};
 
