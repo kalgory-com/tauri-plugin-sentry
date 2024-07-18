@@ -1,8 +1,8 @@
 {
   "name": "tauri-plugin-sentry-api",
-  "version": "0.0.0",
-  "author": "You",
-  "description": "",
+  "version": "0.1.0",
+  "author": "ZhaoTzuHsien",
+  "description": "Tauri v2 plugin for sentry integration",
   "type": "module",
   "types": "./dist-js/index.d.ts",
   "main": "./dist-js/index.cjs",
@@ -18,8 +18,8 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "prepublishOnly": "yarn build",
-    "pretest": "yarn build"
+    "prepublishOnly": "pnpm build",
+    "pretest": "pnpm build"
   },
   "dependencies": {
     "@tauri-apps/api": ">=2.0.0-beta.6"
