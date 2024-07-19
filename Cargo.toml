@@ -17,8 +17,10 @@ serde_json = { version = "1.0.120", optional = true }
 
 [build-dependencies]
 tauri-plugin = { version = "2.0.0-beta.18", features = ["build"] }
-sentry = { version = "0.34.0", features = ["test"] }
 
 [features]
 tracing = []
 test = ["tauri/test"]
+
+[dev-dependencies]
+sentry = { version = "0.34.0", features = ["test"] }

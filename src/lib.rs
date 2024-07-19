@@ -33,13 +33,16 @@ impl<R: Runtime, T: Manager<R>> SentryExt<R> for T {
 
 /// Initializes the plugin.
 pub fn init<R: Runtime>() -> TauriPlugin<R> {
-    Builder::new("sentry")
+    let builder = Builder::new("sentry")
         .invoke_handler(tauri::generate_handler![commands::ping])
         .setup(|app, api| {
-            #[cfg(desktop)]
             let sentry = api::init(app, api)?;
             app.manage(sentry);
             Ok(())
-        })
-        .build()
+        });
+
+    #[cfg(feature = "tracing")]
+    let builder = builder.js_init_script(String::from(tracing::init::INIT_SCRIPT));
+
+    builder.build()
 }

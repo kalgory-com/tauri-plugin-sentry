@@ -55,7 +55,7 @@ mod tests {
 
     #[test]
     fn test_command_arg_implementation() {
-        let app = create_app(mock_builder(), generate_handler![test_command]);
+        let app = create_app(mock_builder().invoke_handler(generate_handler![test_command]));
 
         // Create a mock TransactionContext with sentry-trace header
         let trace_id = TraceId::default();
