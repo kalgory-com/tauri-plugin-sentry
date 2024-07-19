@@ -42,7 +42,7 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
         });
 
     #[cfg(feature = "tracing")]
-    let builder = builder.js_init_script(String::from(tracing::init::INIT_SCRIPT));
+    let builder = builder.js_init_script(String::from(tracing::INIT_SCRIPT));
 
     builder.build()
 }

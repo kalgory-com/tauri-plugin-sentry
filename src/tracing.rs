@@ -1,2 +1,5 @@
-pub mod init;
-pub mod models;
+mod init;
+mod models;
+
+#[doc(inline)]
+pub use init::*;
