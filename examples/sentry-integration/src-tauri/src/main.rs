@@ -1,10 +1,18 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+use sentry::TransactionContext;
+use tauri_plugin_sentry::tracing::TransactionContextArg;
+
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
+fn greet(name: &str, arg: TransactionContextArg) -> String {
+    let context: Option<TransactionContext> = arg.into();
+    let trace_info = match context {
+        None => String::from("There is no distributed tracing header."),
+        Some(context) => format!("Distributed tracing with name: {} and trace-id: {}", context.name(), context.trace_id().to_string())
+    };
+    format!("Hello, {}! You've been greeted from Rust!\n{}", name, trace_info)
 }
 
 fn main() {

@@ -4,13 +4,8 @@ import * as Sentry from '@sentry/browser';
 export async function invoke<T>(cmd: string, args?: InvokeArgs, options?: InvokeOptions): Promise<T> {
   const tracingHeaders = extractHeaders();
 
-  if (options !== undefined) options.headers = new Headers(options.headers);
-  else options = { headers: new Headers(tracingHeaders) }
-
-  // Append sentry tracing headers
-  for (const [name, value] of tracingHeaders.entries()) {
-    (options.headers as Headers).set(name, value);
-  }
+  if (options === undefined) options = { headers: {} };
+  options.headers = { ...options.headers, ...Object.fromEntries(tracingHeaders) }
 
   return await tauriInvoke<T>(cmd, args, options);
 }
