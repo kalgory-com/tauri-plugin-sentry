@@ -25,6 +25,7 @@ export default {
   ],
   external: [
     /^@tauri-apps\/api/,
+    /^@sentry\/browser/,
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.peerDependencies || {})
   ]
