@@ -2,6 +2,7 @@ use sentry::TransactionContext;
 use tauri::ipc::{CommandArg, CommandItem, InvokeError};
 use tauri::Runtime;
 
+#[derive(Debug)]
 pub struct TransactionContextArg(Option<TransactionContext>);
 
 impl<'de, R: Runtime> CommandArg<'de, R> for TransactionContextArg {

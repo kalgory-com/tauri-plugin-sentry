@@ -1,4 +1,4 @@
-use tauri::{command, AppHandle, Runtime};
+/*use tauri::{command, AppHandle, Runtime};
 
 use crate::models::*;
 use crate::Result;
@@ -10,4 +10,4 @@ pub(crate) async fn ping<R: Runtime>(
     payload: PingRequest,
 ) -> Result<PingResponse> {
     app.sentry().ping(payload)
-}
+}*/

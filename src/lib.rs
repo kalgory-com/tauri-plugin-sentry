@@ -12,9 +12,9 @@ mod error;
 mod models;
 #[cfg(test)]
 #[cfg(feature = "test")]
-mod test;
+pub mod test;
 #[cfg(feature = "tracing")]
-mod tracing;
+pub mod tracing;
 
 pub use error::{Error, Result};
 
@@ -34,7 +34,6 @@ impl<R: Runtime, T: Manager<R>> SentryExt<R> for T {
 /// Initializes the plugin.
 pub fn init<R: Runtime>() -> TauriPlugin<R> {
     Builder::new("sentry")
-        .invoke_handler(tauri::generate_handler![commands::ping])
         .setup(|app, api| {
             let sentry = api::init(app, api)?;
             app.manage(sentry);
