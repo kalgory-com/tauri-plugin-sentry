@@ -8,9 +8,8 @@ on:
     branches:
       - main
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+env:
+  CARGO_TERM_COLOR: always
 
 jobs:
   test:
@@ -23,7 +22,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
+      - name: Install Rust toolchain
+        run: rustup update stable && rustup default stable
       - name: install webkit2gtk
         if: matrix.platform == 'ubuntu-latest'
         run: |
