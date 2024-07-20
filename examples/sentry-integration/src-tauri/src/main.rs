@@ -10,9 +10,16 @@ fn greet(name: &str, arg: TransactionContextArg) -> String {
     let context: Option<TransactionContext> = arg.into();
     let trace_info = match context {
         None => String::from("There is no distributed tracing header."),
-        Some(context) => format!("Distributed tracing with name: {} and trace-id: {}", context.name(), context.trace_id().to_string())
+        Some(context) => format!(
+            "Distributed tracing with name: {} and trace-id: {}",
+            context.name(),
+            context.trace_id().to_string()
+        ),
     };
-    format!("Hello, {}! You've been greeted from Rust!\n{}", name, trace_info)
+    format!(
+        "Hello, {}! You've been greeted from Rust!\n{}",
+        name, trace_info
+    )
 }
 
 fn main() {
