@@ -13,7 +13,7 @@ fn greet(name: &str, arg: TransactionContextArg) -> String {
         Some(context) => format!(
             "Distributed tracing with name: {} and trace-id: {}",
             context.name(),
-            context.trace_id().to_string()
+            context.trace_id()
         ),
     };
     format!(
