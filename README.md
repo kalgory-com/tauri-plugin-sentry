@@ -42,7 +42,7 @@ cargo tauri add dialog
             .expect("error while running tauri application");
     }
     ```
-3. If you’d like create dialogs in JavaScript, install the npm package as well:
+3. Install the npm package as well:
     ```bash
     npm install tauri-plugin-sentry-api # or
     yarn add tauri-plugin-sentry-api    # or
