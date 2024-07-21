@@ -15,6 +15,9 @@ importers:
       '@rollup/plugin-typescript':
         specifier: ^11.1.6
         version: 11.1.6(rollup@4.18.1)(tslib@2.6.3)(typescript@5.5.3)
+      '@sentry/browser':
+        specifier: ^8.19.0
+        version: 8.19.0
       rollup:
         specifier: ^4.9.6
         version: 4.18.1
@@ -128,6 +131,38 @@ packages:
     resolution: {integrity: sha512-yjk2MAkQmoaPYCSu35RLJ62+dz358nE83VfTePJRp8CG7aMg25mEJYpXFiD+NcevhX8LxD5OP5tktPXnXN7GDw==}
     cpu: [x64]
     os: [win32]
+
+  '@sentry-internal/browser-utils@8.19.0':
+    resolution: {integrity: sha512-kM/2KlikKuBR63nFi2q7MGS3V9K9hakjvUknhr/jHZqDVfEuBKmp1ZlHFAdJtglKHHJy07gPj/XqDH7BbYh5yg==}
+    engines: {node: '>=14.18'}
+
+  '@sentry-internal/feedback@8.19.0':
+    resolution: {integrity: sha512-Jc77H8fEaGcBhERc2U/o7Q8CZHvlZLT9vAlzq0ZZR20v/1vwYcJW1ysKfTuvmw22hCR6ukhFNl6pqJocXFVhvA==}
+    engines: {node: '>=14.18'}
+
+  '@sentry-internal/replay-canvas@8.19.0':
+    resolution: {integrity: sha512-l4pKJDHrXEctxrK7Xme/+fKToXpGwr/G2t77BzeE1WEw9LwSwADz/hi8HoMdZzuKWriM2BNbz20tpVS84sODxA==}
+    engines: {node: '>=14.18'}
+
+  '@sentry-internal/replay@8.19.0':
+    resolution: {integrity: sha512-EW9e1J6XbqXUXQST1AfSIzT9O8OwPyeFOkhkn9/gqOQv08TJvQEIBtWJEoJS+XFMEUuB8IqIzVWNVko/DnGt9A==}
+    engines: {node: '>=14.18'}
+
+  '@sentry/browser@8.19.0':
+    resolution: {integrity: sha512-ZC1HxIFm4TIGONyy9MkPG6Dw8IAhzq43t5mq9PqrB1ehuWj8GX6Vk3E26kuc2sydAm4AXbj0562OmvZHsAJpUA==}
+    engines: {node: '>=14.18'}
+
+  '@sentry/core@8.19.0':
+    resolution: {integrity: sha512-MrgjsZCEjOJgQjIznnDSrLEy7qL+4LVpNieAvr49cV1rzBNSwGmWRnt/puVaPsLyCUgupVx/43BPUHB/HtKNUw==}
+    engines: {node: '>=14.18'}
+
+  '@sentry/types@8.19.0':
+    resolution: {integrity: sha512-52C8X5V7mK2KIxMJt8MV5TxXAFHqrQR1RKm1oPTwKVWm8hKr1ZYJXINymNrWvpAc3oVIKLC/sa9WFYgXQh+YlA==}
+    engines: {node: '>=14.18'}
+
+  '@sentry/utils@8.19.0':
+    resolution: {integrity: sha512-8dWJJKaUN6Hf92Oxw2TBmHchGua2W3ZmonrZTTwLvl06jcAigbiQD0MGuF5ytZP8PHx860orV+SbTGKFzfU3Pg==}
+    engines: {node: '>=14.18'}
 
   '@tauri-apps/api@2.0.0-beta.15':
     resolution: {integrity: sha512-H9w6iISmR+NvH4XuyCZB4zDN10tf9RFt6i/9JHEjaRhAowdAaJ+oiXq/3kedizNClHMtbTQ5j0oqDVPkZDAI8g==}
@@ -249,6 +284,53 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.18.1':
     optional: true
+
+  '@sentry-internal/browser-utils@8.19.0':
+    dependencies:
+      '@sentry/core': 8.19.0
+      '@sentry/types': 8.19.0
+      '@sentry/utils': 8.19.0
+
+  '@sentry-internal/feedback@8.19.0':
+    dependencies:
+      '@sentry/core': 8.19.0
+      '@sentry/types': 8.19.0
+      '@sentry/utils': 8.19.0
+
+  '@sentry-internal/replay-canvas@8.19.0':
+    dependencies:
+      '@sentry-internal/replay': 8.19.0
+      '@sentry/core': 8.19.0
+      '@sentry/types': 8.19.0
+      '@sentry/utils': 8.19.0
+
+  '@sentry-internal/replay@8.19.0':
+    dependencies:
+      '@sentry-internal/browser-utils': 8.19.0
+      '@sentry/core': 8.19.0
+      '@sentry/types': 8.19.0
+      '@sentry/utils': 8.19.0
+
+  '@sentry/browser@8.19.0':
+    dependencies:
+      '@sentry-internal/browser-utils': 8.19.0
+      '@sentry-internal/feedback': 8.19.0
+      '@sentry-internal/replay': 8.19.0
+      '@sentry-internal/replay-canvas': 8.19.0
+      '@sentry/core': 8.19.0
+      '@sentry/types': 8.19.0
+      '@sentry/utils': 8.19.0
+
+  '@sentry/core@8.19.0':
+    dependencies:
+      '@sentry/types': 8.19.0
+      '@sentry/utils': 8.19.0
+
+  '@sentry/types@8.19.0': {}
+
+  '@sentry/utils@8.19.0':
+    dependencies:
+      '@sentry/types': 8.19.0
 
   '@tauri-apps/api@2.0.0-beta.15': {}
 

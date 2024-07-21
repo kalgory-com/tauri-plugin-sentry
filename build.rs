@@ -1,6 +1,5 @@
-const COMMANDS: &[&str] = &["ping"];
+const COMMANDS: &[&str] = &[];
 
 fn main() {
-    tauri_plugin::Builder::new(COMMANDS)
-        .build();
+    tauri_plugin::Builder::new(COMMANDS).build();
 }
