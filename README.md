@@ -74,13 +74,18 @@ fn greet(name: &str, arg: TransactionContextArg) {
     let context_option: Option<TransactionContext> = arg.into();
     match context_option {
        None => println!("No distributed tracing information"),
-       Some(context) => println!("Distributed tracing with name: \"{}\" and trace id: \"{}\"", context.name(), context.trace_id()),
+       Some(context) =>
+          println!(
+             "Distributed tracing with name: \"{}\" and trace id: \"{}\"",
+             context.name(),
+             context.trace_id()
+          ),
     }
 }
 ```
 
+To see how to setup and run a Tauri v2 application with Sentry integration, check the [examples](./examples) folder.
+
 > [!NOTE]
 > You should start a span manually or enable automatic instrumentation before the `invoke` function.
-> Otherwise, the Rust command don't have the tracing information.
-
-To see how to setup and run a Tauri v2 application with Sentry integration, check the [examples](./examples) folder.
+> Otherwise, the Rust command won't have the tracing information.
