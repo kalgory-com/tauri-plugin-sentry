@@ -90,6 +90,8 @@ mod tests {
         .unwrap();
 
         let response_context = res.deserialize::<String>().unwrap();
-        assert_eq!(response_context, format!("{:?}", context))
+        assert_eq!(response_context, format!("{:?}", context));
+        
+        app.cleanup_before_exit();
     }
 }
